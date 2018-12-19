@@ -1,8 +1,16 @@
 @import (inline) 'bootstrap-reboot.min.css';
 
+/* Colors */
+
+@gridColor: #ddd;
+
+/* Helpers */
+
 .transition {
     transition: 125ms ease-in-out;
 }
+
+/* Custom */
 
 body {
     overflow-x: hidden;
@@ -29,7 +37,7 @@ body {
             top: 0;
             left: 50%;
             transform: translateY(-50%);
-            background: #eee;
+            background: @gridColor;
             z-index: -10;
         }
 
@@ -41,14 +49,14 @@ body {
             top: 50%;
             right: -100%;
             transform: translateX(-50%);
-            background: #eee;
+            background: @gridColor;
             z-index: -10;
         }
 
         .item_wrapper {
             width: 15vw;
             height: 15vw;
-            border: 1px solid #eee;
+            border: 1px solid @gridColor;
             background: #fefefe;
             border-radius: 100%;
             margin: 0 auto;
@@ -86,7 +94,7 @@ body {
             transform: translate(-50%, -50%);
             font-size: 10vw;
             font-family: monospace;
-            color: #eee;
+            color: @gridColor;
             text-shadow: 0 2px 0 #fff;
             .transition;
         }
