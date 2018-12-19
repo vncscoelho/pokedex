@@ -18,9 +18,8 @@ class Item extends Component {
 
         return (
             <div className="item" onClick={() => this.toggleDetail()}>
+                {data.id === 1 ? <ItemDetail pokemonData={data} /> : null}
                 <div className="item_wrapper">
-                    {data.id === 1 ? <ItemDetail pokemonData={data} /> : null}
-
                     <span className="item_entry">{pad(data.id)}</span>
                     <img
                         src={data.sprite}

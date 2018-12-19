@@ -3,6 +3,7 @@
 /* Colors */
 
 @gridColor: #ddd;
+@coral: #ff6f61;
 
 /* Helpers */
 
@@ -14,6 +15,41 @@
 
 body {
     overflow-x: hidden;
+    font-family: monospace;
+}
+
+img {
+    image-rendering: pixelated;
+}
+
+.button {
+    border-radius: 99px;
+    border: 1px solid @gridColor;
+    text-transform: uppercase;
+    padding: 12px 24px;
+    font-size: 20px;
+    background: #fff;
+    margin: 12px 0;
+    box-shadow: 0 2px 1px #eee;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+
+    &:focus,
+    &:active {
+        outline: 0;
+    }
+
+    label {
+        cursor: pointer;
+        margin: 0;
+        padding: 0;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .pokemon_container {
@@ -73,7 +109,7 @@ body {
 
                 .item_entry,
                 .item_title {
-                    color: #ff6f61;
+                    color: @coral;
                 }
             }
         }
@@ -83,7 +119,6 @@ body {
             position: relative;
             z-index: 10;
             filter: grayscale();
-            image-rendering: pixelated;
             transition: all 50ms linear;
         }
 
@@ -93,7 +128,6 @@ body {
             left: 100%;
             transform: translate(-50%, -50%);
             font-size: 10vw;
-            font-family: monospace;
             color: @gridColor;
             text-shadow: 0 2px 0 #fff;
             .transition;
@@ -111,7 +145,6 @@ body {
 
     /* Details */
     .item-detail_wrapper {
-        background: red;
         width: 100vw;
         height: 100vh;
         position: fixed;
@@ -121,9 +154,87 @@ body {
         display: flex;
         justify-content: center;
         align-items: center;
+        background: rgba(255, 255, 255, 0.95);
 
         .item-detail_container {
-            max-width: 1200px;
+            width: 100%;
+            height: 50%;
+            background: #fff;
+            border: 1px solid @gridColor;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            position: relative;
+            text-align: center;
+
+            .item-detail_picture {
+                width: 250px;
+                margin: 0 auto;
+                border-radius: 100%;
+                border: 1px solid @gridColor;
+                position: relative;
+                background: #fff;
+                margin-top: -125px;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            p {
+                margin: 0;
+            }
+
+            .item-detail_title {
+                span {
+                    display: inline-block;
+                    vertical-align: middle;
+                }
+
+                .item-detail_entry {
+                    font-size: 32px;
+                    text-shadow: 0 2px 0 #fff;
+                    position: relative;
+                    color: @gridColor;
+                    margin-right: 10px;
+                }
+
+                .item-detail_name {
+                    color: black;
+                    font-size: 46px;
+                    text-transform: uppercase;
+                }
+            }
+
+            .item-detail_types {
+                display: flex;
+                justify-content: center;
+
+                .type:last-of-type {
+                    flex-direction: row-reverse;
+                }
+            }
+
+            .item-detail_flavor-text {
+                max-width: 480px;
+                margin: 32px auto;
+            }
+        }
+    }
+
+    .type {
+        display: flex;
+        align-items: center;
+        text-transform: capitalize;
+        font-style: italic;
+        font-size: 18px;
+
+        .icon {
+            width: 45px;
+            height: 45px;
+            line-height: 45px;
+            border: 1px solid @gridColor;
+            border-radius: 100%;
+            margin: 0 3px;
+            font-style: normal;
         }
     }
 }
