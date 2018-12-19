@@ -6,7 +6,7 @@ import ItemDetail from './ItemDetail';
 
 class Item extends Component {
     state = {
-        showDetail: true
+        showDetail: false
     };
 
     toggleDetail = () => {
@@ -14,13 +14,12 @@ class Item extends Component {
     };
 
     render() {
-        const data = { ...this.props.data };
+        const { data } = { ...this.props };
+
         return (
             <div className="item" onClick={() => this.toggleDetail()}>
                 <div className="item_wrapper">
-                    {this.state.showDetail === true ? (
-                        <ItemDetail pokemonData={data} />
-                    ) : null}
+                    {data.id === 1 ? <ItemDetail pokemonData={data} /> : null}
 
                     <span className="item_entry">{pad(data.id)}</span>
                     <img
