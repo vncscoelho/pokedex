@@ -37,9 +37,8 @@ class Container extends Component {
             });
     };
 
-    setPokemonList = pokemonList => {
-        return pokemonList.map(item => <Item data={item} key={item.id} />);
-    };
+    setPokemonList = pokemonList =>
+        pokemonList.map(item => <Item data={item} key={item.id} />);
 
     render() {
         return (
