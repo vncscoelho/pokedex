@@ -13,11 +13,16 @@ class Container extends Component {
     /* Get Pokemon from API and load into state */
     getPokemonListFromAPI = async () => {
         return await fetch(
-            'http://pokeapi.salestock.net/api/v2/pokemon/?limit=151'
+            'https://pokeapi-215911.firebaseapp.com/api/v2/pokemon/?limit=151'
         )
             .then(response => response.json())
             .then(data => {
                 data.results.map((pokemon, key) => {
+                    /* API param limit isn't working - ISSUE #372 */
+                    if (key > 151) {
+                        return false;
+                    }
+
                     /* Match IDs to their official "Entry in Pokedex" */
                     key += 1;
 
@@ -31,9 +36,7 @@ class Container extends Component {
                     return pokemon;
                 });
 
-                this.setState({
-                    pokemon: data.results
-                });
+                this.setState({ pokemon: data.results });
             });
     };
 
