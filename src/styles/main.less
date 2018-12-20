@@ -6,6 +6,62 @@
 @coral: #ff6f61;
 
 /* Helpers */
+.icon {
+    .poison:before {
+        content: '☠️';
+    }
+    .grass:before {
+        content: '🌿';
+    }
+    .steel:before {
+        content: '🔩';
+    }
+    .fairy:before {
+        content: '🧚';
+    }
+    .dragon:before {
+        content: '🐲';
+    }
+    .dark:before {
+        content: '⚫';
+    }
+    .ghost:before {
+        content: '👻';
+    }
+    .electric:before {
+        content: '⚡';
+    }
+    .fire:before {
+        content: '🔥';
+    }
+    .ice:before {
+        content: '❄️';
+    }
+    .water:before {
+        content: '💧';
+    }
+    .flying:before {
+        content: '💨';
+    }
+    .fighting:before {
+        content: '👊';
+    }
+    .psychic:before {
+        content: '🔮';
+    }
+    .normal:before {
+        content: '💥';
+    }
+    .bug:before {
+        content: '🐞';
+    }
+    .ground:before {
+        content: '⛰️';
+    }
+    .rock:before {
+        content: '🌕';
+    }
+}
 
 .transition {
     transition: 125ms ease-in-out;
@@ -201,6 +257,14 @@ img {
                     color: black;
                     font-size: 46px;
                     text-transform: uppercase;
+                    line-height: 46px;
+                }
+
+                .item-detail_jpName {
+                    margin-bottom: 10px;
+                    font-size: 14px;
+                    color: #666;
+                    display: block;
                 }
             }
 
@@ -215,7 +279,7 @@ img {
 
             .item-detail_flavor-text {
                 max-width: 480px;
-                margin: 32px auto;
+                margin: 25px auto;
             }
         }
     }
