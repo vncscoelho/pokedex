@@ -5,6 +5,7 @@ const initialState = {
 const pokedex = (state = initialState, action) => {
     switch (action.type) {
         case 'TOGGLE_POKEMON':
+            /* If the Pokemon was caught already, set its ID to false */
             if (state.caughtPokemon[action.newValue] === true) {
                 return {
                     ...state,
@@ -14,7 +15,8 @@ const pokedex = (state = initialState, action) => {
                     }
                 };
             }
-            console.log('A');
+
+            /* If not, push its ID into store */
             return {
                 ...state,
                 caughtPokemon: {
@@ -22,6 +24,7 @@ const pokedex = (state = initialState, action) => {
                     [action.newValue]: true
                 }
             };
+
         default:
             return state;
     }
