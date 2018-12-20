@@ -4,6 +4,8 @@ import { pad } from '../../Helper';
 
 import ItemDetail from './ItemDetail';
 
+import { connect } from 'react-redux';
+
 class Item extends Component {
     state = {
         showDetail: false
@@ -14,17 +16,28 @@ class Item extends Component {
     };
 
     render() {
-        const { data } = { ...this.props };
+        const { data, pokedex } = this.props;
 
         return (
-            <div className="item" onClick={() => this.toggleDetail()}>
-                {data.id === 1 ? <ItemDetail pokemonData={data} /> : null}
-                <div className="item_wrapper">
+            <div className="item">
+                {this.state.showDetail === true ? (
+                    <ItemDetail
+                        pokemonData={data}
+                        closeHandler={this.toggleDetail}
+                    />
+                ) : null}
+                <div
+                    className="item_wrapper"
+                    onClick={() => this.toggleDetail()}
+                >
                     <span className="item_entry">{pad(data.id)}</span>
                     <img
                         src={data.sprite}
                         alt={data.name}
-                        className="item_img"
+                        className={
+                            'item_img pkm-status' +
+                            (pokedex[data.id] === true ? ' caught' : '')
+                        }
                     />
                     <p className="item_title">{data.name}</p>
                 </div>
@@ -33,4 +46,8 @@ class Item extends Component {
     }
 }
 
-export default Item;
+const mapStateToProps = store => ({
+    pokedex: store.pokedex.caughtPokemon
+});
+
+export default connect(mapStateToProps)(Item);

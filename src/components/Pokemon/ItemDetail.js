@@ -65,7 +65,7 @@ class ItemDetail extends Component {
     render() {
         const data = { ...this.props.pokemonData };
 
-        const { addPokemon, pokedex } = this.props;
+        const { addPokemon, pokedex, closeHandler } = this.props;
 
         /* Todos os dados incluindo linugas : https://pokeapi.co/api/v2/pokemon-species/1/ */
         /* Dados gerais: https://pokeapi.co/api/v2/pokemon/1/ */
@@ -77,7 +77,14 @@ class ItemDetail extends Component {
             <section className="item-detail_wrapper">
                 <div className="item-detail_container">
                     <div className="item-detail_picture">
-                        <img src={data.sprite} alt={data.name} />
+                        <img
+                            src={data.sprite}
+                            alt={data.name}
+                            className={
+                                'pkm-status' +
+                                (pokedex[data.id] === true ? ' caught' : '')
+                            }
+                        />
                     </div>
                     <p className="item-detail_title">
                         <span className="item-detail_entry">
@@ -96,26 +103,35 @@ class ItemDetail extends Component {
                     </p>
                     <button
                         className={
-                            'button ' +
-                            (pokedex[data.id] === true ? 'caught' : '')
+                            'button' +
+                            (pokedex[data.id] === true ? ' caught' : '')
                         }
                         type="button"
                         onClick={() => addPokemon(data.id)}
                     >
-                        I've caught it!
+                        {pokedex[data.id] === true
+                            ? 'In Pokedex'
+                            : 'Add to Pokedex'}
                     </button>
                 </div>
+                <button
+                    className="button item-detail_close"
+                    type="button"
+                    onClick={() => closeHandler()}
+                >
+                    x
+                </button>
             </section>
         );
     }
 }
 
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({ addPokemon }, dispatch);
+
 const mapStateToProps = store => ({
     pokedex: store.pokedex.caughtPokemon
 });
-
-const mapDispatchToProps = dispatch =>
-    bindActionCreators({ addPokemon }, dispatch);
 
 export default connect(
     mapStateToProps,
