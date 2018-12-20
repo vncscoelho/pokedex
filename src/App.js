@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+
 import './styles/main.css';
 
 import Container from './components/Pokemon/Container';

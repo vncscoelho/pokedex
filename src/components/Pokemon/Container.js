@@ -3,7 +3,8 @@ import Item from './Item';
 
 class Container extends Component {
     state = {
-        pokemon: []
+        pokemon: [],
+        caughtPokemon: []
     };
 
     componentDidMount() {

@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import { pad } from '../../Helper';
 
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { addPokemon } from '../../actions/';
+
 class ItemDetail extends Component {
     state = {
         jpName: '',
@@ -61,10 +65,13 @@ class ItemDetail extends Component {
     render() {
         const data = { ...this.props.pokemonData };
 
+        const { addPokemon, pokedex } = this.props;
+
         /* Todos os dados incluindo linugas : https://pokeapi.co/api/v2/pokemon-species/1/ */
         /* Dados gerais: https://pokeapi.co/api/v2/pokemon/1/ */
         /* Evolucoes: https://pokeapi.co/api/v2/evolution-chain/1/ */
         /* switch de pokeball */
+        /* emoji cainho no bg */
 
         return (
             <section className="item-detail_wrapper">
@@ -87,10 +94,14 @@ class ItemDetail extends Component {
                     <p className="item-detail_flavor-text">
                         {this.state.flavorText}
                     </p>
-                    <button className="button" type="button">
-                        <label htmlFor="checkPokemon">
-                            <input type="checkbox" id="checkPokemon" />
-                        </label>
+                    <button
+                        className={
+                            'button ' +
+                            (pokedex[data.id] === true ? 'caught' : '')
+                        }
+                        type="button"
+                        onClick={() => addPokemon(data.id)}
+                    >
                         I've caught it!
                     </button>
                 </div>
@@ -99,4 +110,14 @@ class ItemDetail extends Component {
     }
 }
 
-export default ItemDetail;
+const mapStateToProps = store => ({
+    pokedex: store.pokedex.caughtPokemon
+});
+
+const mapDispatchToProps = dispatch =>
+    bindActionCreators({ addPokemon }, dispatch);
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(ItemDetail);

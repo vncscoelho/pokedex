@@ -1,0 +1,1 @@
+export const TOGGLE_POKEMON = 'TOGGLE_POKEMON';
