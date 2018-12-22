@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import Item from './Item';
 
-class Container extends Component {
+class PokemonContainer extends Component {
     state = {
         pokemon: []
     };
@@ -52,4 +52,4 @@ class Container extends Component {
     }
 }
 
-export default Container;
+export default PokemonContainer;

@@ -93,15 +93,41 @@ img {
     image-rendering: pixelated;
 }
 
+.input-label {
+    display: block;
+    position: relative;
+    margin-top: 15px;
+
+    .input-label_text {
+        position: absolute;
+        padding: 2px 6px;
+        background: #fff;
+        border: 1px solid @gridColor;
+        border-radius: 99px;
+        top: -12px;
+        font-size: 12px;
+    }
+
+    .input {
+        border-radius: 99px;
+        border: 1px solid @gridColor;
+        padding: 12px 24px;
+        font-size: 18px;
+        background: #fff;
+        box-shadow: inset 0 2px 1px #eee;
+        outline: 0;
+    }
+}
+
 .button {
+    text-transform: uppercase;
     border-radius: 99px;
     border: 1px solid @gridColor;
-    text-transform: uppercase;
     padding: 12px 24px;
     font-size: 20px;
     background: #fff;
-    margin: 12px 0;
     box-shadow: 0 2px 1px #eee;
+    margin: 12px 0;
     position: relative;
     cursor: pointer;
     overflow: hidden;
@@ -132,11 +158,29 @@ img {
     }
 }
 
+.login_container {
+    /*     position: fixed; */
+    width: 80%;
+    background: #fff;
+    z-index: 20;
+    border: 1px solid @gridColor;
+    border-top: 0;
+    text-align: center;
+    top: 0;
+    margin: -1% auto;
+    /* left: 50%;
+    transform: translateX(-50%); */
+    border-radius: 0 0 99px 99px;
+    padding: 20px 0;
+}
+
 .pokemon_container {
+    /* margin-top: 80px; */
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    overflow: hidden;
 
     .item {
         flex: 1 0 25%;
@@ -149,7 +193,7 @@ img {
             content: '';
             position: absolute;
             width: 1px;
-            height: 100%;
+            height: 100vh;
             top: 0;
             left: 50%;
             transform: translateY(-50%);
@@ -325,7 +369,7 @@ img {
         line-height: 45px;
         border: 1px solid @gridColor;
         border-radius: 100%;
-        margin: 0 3px;
+        margin: 0 6px;
         font-style: normal;
     }
 }
