@@ -2,6 +2,8 @@
 
 A Pokédex powered by React. This was submitted as a technical challenge.
 
+Can be viewed live in https://pokedex-divisio.netlify.app/
+
 ## Requirements:
 
 -   [ ] Login
